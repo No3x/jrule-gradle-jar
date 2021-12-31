@@ -1,5 +1,6 @@
 package org.openhab.automation.jrule.rules.user;
 
+import org.openhab.automation.jrule.items.generated._MyOtherItem;
 import org.openhab.automation.jrule.items.generated._MyTestSwitch;
 import org.openhab.automation.jrule.rules.JRule;
 import org.openhab.automation.jrule.rules.JRuleName;
@@ -13,6 +14,8 @@ public class MySwitchRule extends JRule {
 	@JRuleWhen(item = _MyTestSwitch.ITEM, trigger = _MyTestSwitch.TRIGGER_CHANGED_TO_ON)
 	public void execOffToOnRule() {
 		final MyData myData = new MyData("1");
-		logInfo("||||| --> Hello World! And hello lombok " + myData.getName());
+		final String someCalculatedValue = myData.getName();
+		logInfo("||||| --> Hello World! And hello lombok " + someCalculatedValue);
+		_MyOtherItem.sendCommand(someCalculatedValue);
 	}
 }

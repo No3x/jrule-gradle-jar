@@ -8,14 +8,6 @@ repositories {
     mavenCentral()
 }
 
-sourceSets {
-    main {
-        java {
-            srcDirs = ['myrules']
-        }
-    }
-}
-
 java {
     toolchain {
         languageVersion = JavaLanguageVersion.of(11)

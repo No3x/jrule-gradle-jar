@@ -15,9 +15,9 @@ The workspace (after jrule is initialized) contains of the following:
 - `ext-lib` additional dependencies (ignore)
 - `rules` compiled by jrule (ignore, we do not use this with gradle build approach because we compile on our own)
 
-Only this two are acutally important for you: 
-- `myrules/org/openhab/automation/jrule/rules/user` place your java rules here
-- `de/my/internal` place everything but rules here. You can name it whatever you like `e.g. org.my.package`
+Only these two are actually important for you: 
+- `src/main/java/org/openhab/automation/jrule/rules/user` place your java rules here
+- `src/main/java/de/my/internal` place everything but rules here. You can name it whatever you like `e.g. org.my.package`
 
 ## Build
 When you wish to deploy your rules execute the `assemble` task.
