@@ -1,0 +1,32 @@
+plugins {
+    id 'java-library'
+    id "io.freefair.lombok" version "6.3.0"
+}
+
+repositories {
+    mavenCentral()
+}
+
+sourceSets {
+    main {
+        java {
+            srcDirs = ['myrules']
+        }
+    }
+}
+
+java {
+    toolchain {
+        languageVersion = JavaLanguageVersion.of(11)
+    }
+}
+
+dependencies {
+    implementation 'com.google.guava:guava:31.0.1-jre'
+    implementation fileTree(dir: "./ext-lib", includes: ['*.jar']) // actually not used probably, because we use gradle
+    implementation fileTree(dir: "./jar", includes: ['*.jar'])
+}
+
+jar {
+    destinationDirectory = file("$rootDir/rules-jar")
+}
