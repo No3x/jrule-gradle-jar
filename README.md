@@ -15,14 +15,14 @@ The workspace contains of the following:
 - `ext-lib` additional dependencies (ignore)
 - `rules` compiled by jrule (ignore, we do not use this with gradle build approach because we compile on our own)
 
-Only this two are acutally important for your: 
+Only this two are acutally important for you: 
 - `myrules/org/openhab/automation/jrule/rules/user` place your java rules here
-- `de/my/internal` place everything Rules here. You can name it whatever you like `e.g. org.my.package`
-
-> The `rules-jar` folder will contain your custom rules compiled to a jar. This is picked up by jrule on change.
+- `de/my/internal` place everything but Rules here. You can name it whatever you like `e.g. org.my.package`
 
 ## Build
 When you wish to deploy your rules execute the `jar` task.
+
+> The `rules-jar` folder will contain your custom rules compiled to a jar. This is picked up by jrule on change.
 
 ## Dependencies
 
