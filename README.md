@@ -3,7 +3,7 @@
 Here is a guideline to help you get started to write rules in Java with jrule. It uses the feature to deploy rules as jar to the `rules-jar` directory.
 
 > For nice *sync support* copy the contents of this project to `/etc/automation/jrule/` and make sure to open it in your IDE (so make sure you are on the openhab
-> server filesystem or on a mapped network drive. This way you IDE will pick up new items and the generated jar is picked up by jrule).
+> server filesystem or on a mapped network drive. This way your IDE will pick up new items and the generated jar is picked up by jrule).
 
 ## Folder Structure
 
@@ -20,7 +20,7 @@ Only this two are acutally important for you:
 - `de/my/internal` place everything but rules here. You can name it whatever you like `e.g. org.my.package`
 
 ## Build
-When you wish to deploy your rules execute the `jar` task.
+When you wish to deploy your rules execute the `assemble` task.
 
 > The `rules-jar` folder will contain your custom rules compiled to a jar. This is picked up by jrule on change.
 
@@ -28,6 +28,24 @@ When you wish to deploy your rules execute the `jar` task.
 
 Lombok is included in this sample. 
 
-### Todo
-Add any dependency you might need like `guava` or `apache commons` in the `dependency` block in `build.gradle`. 
-- [ ] check if this is sufficient to work. I'm afraid it does not work.
+The class MyData shows that you can use lombok and guava as example.
+```java
+package de.my.internal;
+
+import com.google.common.base.Joiner;
+import com.google.common.collect.Sets;
+
+import lombok.Data;
+
+@Data
+public class MyData {
+	private String name;
+
+	public MyData(String name) {
+		final HashSet<String> strings = Sets.newHashSet(name, "2", "3");
+		this.name = Joiner.on(",").join(strings);
+	}
+}
+```
+
+This is accomplished by building an uber jar that contains the compiled dependencies.

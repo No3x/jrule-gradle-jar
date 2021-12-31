@@ -12,7 +12,7 @@ public class MySwitchRule extends JRule {
 	@JRuleName("MySwitchRule")
 	@JRuleWhen(item = _MyTestSwitch.ITEM, trigger = _MyTestSwitch.TRIGGER_CHANGED_TO_ON)
 	public void execOffToOnRule() {
-		final MyData myData = new MyData();
+		final MyData myData = new MyData("1");
 		logInfo("||||| --> Hello World! And hello lombok " + myData.getName());
 	}
 }
