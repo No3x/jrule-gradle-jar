@@ -26,4 +26,8 @@ When you wish to deploy your rules execute the `jar` task.
 
 ## Dependencies
 
-Lombok is included in this sample. Add any dependency you might need like `guava` or `apache commons` in the `dependency` block in `build.gradle`.
+Lombok is included in this sample. 
+
+### Todo
+Add any dependency you might need like `guava` or `apache commons` in the `dependency` block in `build.gradle`. 
+- [ ] check if this is sufficient to work. I'm afraid it does not work.
