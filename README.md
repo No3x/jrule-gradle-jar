@@ -39,12 +39,12 @@ import lombok.Data;
 
 @Data
 public class MyData {
-	private String name;
+  private String name;
 
-	public MyData(String name) {
-		final HashSet<String> strings = Sets.newHashSet(name, "2", "3");
-		this.name = Joiner.on(",").join(strings);
-	}
+  public MyData(String name) {
+    final HashSet<String> strings = Sets.newHashSet(name, "2", "3");
+    this.name = Joiner.on(",").join(strings);
+  }
 }
 ```
 
@@ -67,20 +67,20 @@ import org.openhab.automation.jrule.items.generated._MyOtherItem;
 
 class MySwitchRuleTest {
 
-	private MySwitchRule rule;
+  private MySwitchRule rule;
 
-	@BeforeEach
-	void setUp() {
-		rule = new MySwitchRule();
-	}
+  @BeforeEach
+  void setUp() {
+    rule = new MySwitchRule();
+  }
 
-	@Test
-	void execOffToOnRuleTest() {
-		try (MockedStatic<_MyOtherItem> mocked = mockStatic(_MyOtherItem.class)) {
-			rule.execOffToOnRule();
-			// Verifying mocks.
-			mocked.verify(() -> _MyOtherItem.sendCommand("1,2,3"), times(1));
-		}
-	}
+  @Test
+  void execOffToOnRuleTest() {
+    try (MockedStatic<_MyOtherItem> mocked = mockStatic(_MyOtherItem.class)) {
+      rule.execOffToOnRule();
+      // Verifying mocks.
+      mocked.verify(() -> _MyOtherItem.sendCommand("1,2,3"), times(1));
+    }
+  }
 }
 ```
