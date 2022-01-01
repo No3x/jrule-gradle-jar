@@ -6,6 +6,9 @@ plugins {
 
 repositories {
     mavenCentral()
+    maven {
+        url "https://openhab.jfrog.io/artifactory/libs-release/"
+    }
 }
 
 java {
@@ -18,6 +21,18 @@ dependencies {
     implementation 'com.google.guava:guava:31.0.1-jre'
     compileOnly fileTree(dir: "./ext-lib", includes: ['*.jar']) // actually not used probably, because we use gradle
     compileOnly fileTree(dir: "./jar", includes: ['*.jar'])
+
+    testImplementation fileTree(dir: "./jar", includes: ['*.jar'])
+    testImplementation 'org.openhab.core.bundles:org.openhab.core.test:3.2.0'
+    testImplementation 'org.mockito:mockito-junit-jupiter:4.2.0'
+    testImplementation 'org.mockito:mockito-inline:4.2.0'
+    testImplementation "org.junit.jupiter:junit-jupiter-api:5.8.2"
+    testRuntimeOnly "org.junit.jupiter:junit-jupiter-engine:5.8.2"
+    testImplementation 'org.assertj:assertj-core:3.21.0'
+}
+
+test {
+    useJUnitPlatform()
 }
 
 jar {

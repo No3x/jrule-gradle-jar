@@ -49,3 +49,38 @@ public class MyData {
 ```
 
 This is accomplished by building an uber jar that contains the compiled dependencies.
+
+## Tests
+
+It is possible to unit test your rules. For that we have to mock other items and their methods.
+> It's not pretty and best practice neither. Maybe we can change jrule design to improve testability, but it would diverge from the openhHAB rules DSL.
+
+```java
+package org.openhab.automation.jrule.rules.user;
+
+import static org.mockito.Mockito.*;
+
+import org.junit.jupiter.api.BeforeEach;
+import org.junit.jupiter.api.Test;
+import org.mockito.MockedStatic;
+import org.openhab.automation.jrule.items.generated._MyOtherItem;
+
+class MySwitchRuleTest {
+
+	private MySwitchRule rule;
+
+	@BeforeEach
+	void setUp() {
+		rule = new MySwitchRule();
+	}
+
+	@Test
+	void execOffToOnRuleTest() {
+		try (MockedStatic<_MyOtherItem> mocked = mockStatic(_MyOtherItem.class)) {
+			rule.execOffToOnRule();
+			// Verifying mocks.
+			mocked.verify(() -> _MyOtherItem.sendCommand("1,2,3"), times(1));
+		}
+	}
+}
+```
